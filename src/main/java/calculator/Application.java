@@ -17,13 +17,12 @@ public class Application {
 
 
     public static String[] ExtractNumber(String input) {
-        if (input.isEmpty()) {
+        String trimmedInput = input.trim();
+        if (trimmedInput.isEmpty()) {
             return new String[] {"0"};
         }
-        else {
-            String [] ExtractedNumber = input.split("[,\\:]+");
-            return ExtractedNumber;
-        }
+        String [] ExtractedNumber = trimmedInput.split("[,\\:]+");
+        return ExtractedNumber;
     }
 
     public static void ValidateInput (String[] ExtractedNumber) {
