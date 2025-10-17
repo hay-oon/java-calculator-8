@@ -10,6 +10,9 @@ public class Application {
         String[] ExtractedNumber = ExtractNumber(input);
         // 올바른 숫자 값인지 검증하는 메서드
         ValidateInput(ExtractedNumber);
+        // 숫자들의 합을 계산하는 메서드
+        int sum = CalculateSum(ExtractedNumber);
+        System.out.println("결과 : " + sum);
     }
 
 
@@ -29,5 +32,13 @@ public class Application {
                     throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
                 }
             }
-        }
     }
+
+    public static int CalculateSum (String[] ExtractedNumber) {
+        int sum = 0;
+        for (String number : ExtractedNumber) {
+            sum += Integer.parseInt(number);
+        }
+        return sum;
+    }
+}
