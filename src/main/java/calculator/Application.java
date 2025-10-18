@@ -7,15 +7,15 @@ public class Application {
         System.out.println("덧셈할 문자열을 입력해 주세요.");
         String input = Console.readLine();
         // input 에서 구분자로 문자열을 나누는 메서드
-        String[] ExtractedNumber = ExtractNumber(input);
+        String[] extractedNumber = extractNumber(input);
         // 올바른 숫자 값인지 검증하는 메서드
-        ValidateInput(ExtractedNumber);
+        validateInput(extractedNumber);
         // 숫자들의 합을 계산하는 메서드
-        int sum = CalculateSum(ExtractedNumber);
+        int sum = calculateSum(extractedNumber);
         System.out.println("결과 : " + sum);
     }
 
-    public static String[] ExtractNumber(String input) {
+    public static String[] extractNumber(String input) {
         if (input.isEmpty()) {
             return new String[] {"0"};
         }
@@ -36,19 +36,19 @@ public class Application {
             String numbers = input.substring(newlineIndex + (input.contains("\\n") ? 2 : 1));
             
             // 4. 커스텀 구분자 추출 ("//"와 개행문자 사이)
-            String CustomDelimeter = input.substring(2, newlineIndex);
+            String customDelimiter = input.substring(2, newlineIndex);
             
             // 5. 커스텀 구분자로 숫자들 분리
-            String [] ExtractedNumber = numbers.trim().split(CustomDelimeter);
-            return ExtractedNumber;
+            String [] extractedNumber = numbers.trim().split(customDelimiter);
+            return extractedNumber;
         }
-        String [] ExtractedNumber = input.trim().split("[,\\:]+");
-        return ExtractedNumber;
+        String [] extractedNumber = input.trim().split("[,\\:]+");
+        return extractedNumber;
     }
 
-    public static void ValidateInput (String[] ExtractedNumber) {
+    public static void validateInput (String[] extractedNumber) {
             // 숫자가 아닌 문자가 포함되어 있는지 검증
-            for (String number : ExtractedNumber) {
+            for (String number : extractedNumber) {
                 if (!number.matches("^[0-9]+$")) {
                     throw new IllegalArgumentException("숫자가 아닙니다.");
                 }   
@@ -59,9 +59,9 @@ public class Application {
             }
     }
 
-    public static int CalculateSum (String[] ExtractedNumber) {
+    public static int calculateSum (String[] extractedNumber) {
         int sum = 0;
-        for (String number : ExtractedNumber) {
+        for (String number : extractedNumber) {
             sum += Integer.parseInt(number);
         }
         return sum;
