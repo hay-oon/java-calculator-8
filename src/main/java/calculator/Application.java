@@ -15,13 +15,17 @@ public class Application {
         System.out.println("결과 : " + sum);
     }
 
-
     public static String[] ExtractNumber(String input) {
-        String trimmedInput = input.trim();
-        if (trimmedInput.isEmpty()) {
+        if (input.isEmpty()) {
             return new String[] {"0"};
         }
-        String [] ExtractedNumber = trimmedInput.split("[,\\:]+");
+        if (input.startsWith("//")) {
+            String numbers = input.substring(input.indexOf("\n") + 1);
+            String CustomDelimeter = input.substring(2, input.indexOf("\n"));
+            String [] ExtractedNumber = numbers.trim().split(CustomDelimeter);
+            return ExtractedNumber;
+        }
+        String [] ExtractedNumber = input.trim().split("[,\\:]+");
         return ExtractedNumber;
     }
 
