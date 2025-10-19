@@ -20,10 +20,10 @@ public class Validator {
     
     public static void validateNumbers(String[] numbers) {
         for (String number : numbers) {
-            if (!number.trim().matches("^[0-9]+$")) {
+            if (!number.matches("^[0-9]+$")) {
                 throw new IllegalArgumentException("숫자가 아닌 문자가 포함되어 있습니다. '" + number + "'");
             }
-            if (Integer.parseInt(number.trim()) < 0) {
+            if (Integer.parseInt(number) < 0) {
                 throw new IllegalArgumentException("음수는 입력할 수 없습니다. '" + number + "'");
             }
         }
