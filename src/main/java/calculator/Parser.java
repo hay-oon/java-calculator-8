@@ -12,7 +12,7 @@ public class Parser {
             String numbersPart = input.substring(customDelimiterIndex + 2);
             numbers = numbersPart.trim().split(customDelimiter);
         } else {
-            numbers = input.trim().split("[,\\:]+");
+            numbers = input.trim().split("[,:]+");
         }
         
         // 각 숫자에서 공백 제거
